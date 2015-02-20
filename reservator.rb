@@ -1,9 +1,8 @@
 class Reservator
   def initialize(sku, batch_data, seat_map)
     @sku = sku
-
-    @batch = BatchBit.new batch_data.shift
     @seat_map = seat_map
+    @batch = BatchBit.new batch_data.shift
 
     batch_data.inject(@batch) do |instance, data|
       instance.next_batch = BatchBit.new(data)
